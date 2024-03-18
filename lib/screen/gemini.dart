@@ -74,15 +74,18 @@ class _HomeScreenState extends State<GeminiScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            height: 150,
-            width: 400,
-            decoration: BoxDecoration(border: Border.all(color: Colors.white)),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Text(
-                output.toString(),
-                style: const TextStyle(fontSize: 16),
+          Expanded(
+            child: Container(
+              height: 150,
+              width: 400,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.white)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Text(
+                  output.toString(),
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
             ),
           ),
@@ -105,13 +108,15 @@ class _HomeScreenState extends State<GeminiScreen> {
               child: selectedImage != null
                   ? Image.file(selectedImage!)
                   : const Center(child: Text("Add Image"))),
-          Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  picImageFromGallery();
-                  // resultAns();
-                },
-                child: const Text("Pick")),
+          Expanded(
+            child: Center(
+              child: ElevatedButton(
+                  onPressed: () {
+                    picImageFromGallery();
+                    // resultAns();
+                  },
+                  child: const Text("Pick")),
+            ),
           ),
           const SizedBox(
             height: 30,
@@ -127,11 +132,13 @@ class _HomeScreenState extends State<GeminiScreen> {
                 },
                 child: const Text("Generate Vision")),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextField(
-              controller: chatController,
-              decoration: const InputDecoration(hintText: "Ask me Anything"),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                controller: chatController,
+                decoration: const InputDecoration(hintText: "Ask me Anything"),
+              ),
             ),
           )
         ],
